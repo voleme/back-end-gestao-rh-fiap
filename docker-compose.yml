@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+   mariadb:
+      image: mariadb:10.8.3
+      container_name: mariadb
+      environment:
+         MARIADB_ROOT_PASSWORD: root
+         MARIADB_DATABASE: fiap
+      restart: unless-stopped
+      ports:
+         - 3306:3306
+      volumes:
+         - "mariadb:/var/lib/mysql"
+
+volumes:
+   mariadb:
+      driver: local
